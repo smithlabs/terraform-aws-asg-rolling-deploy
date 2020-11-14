@@ -15,6 +15,11 @@ provider "aws" {
   version = "~> 2.0"
 }
 
+
+# ---------------------------------------------------------------------------------------------------------------------
+# CREATE AN AUTO SCALING GROUP
+# ---------------------------------------------------------------------------------------------------------------------
+
 module "asg" {
   source = "../../"
 
@@ -30,6 +35,10 @@ module "asg" {
   subnet_ids        = data.aws_subnet_ids.default.ids
 }
 
+# ---------------------------------------------------------------------------------------------------------------------
+# CREATE SECURITY RULES THAT ALLOW ALL TRAFFIC IN/OUT
+# ---------------------------------------------------------------------------------------------------------------------
+
 resource "aws_security_group_rule" "allow_server_http_inbound" {
   type              = "ingress"
   security_group_id = module.asg.instance_security_group_id
@@ -40,7 +49,18 @@ resource "aws_security_group_rule" "allow_server_http_inbound" {
   cidr_blocks = local.all_ips
 }
 
+resource "aws_security_group_rule" "allow_server_all_outbound" {
+  type		     = "egress"
+  security_group_id  = module.asg.instance_security_group_id
+
+  from_port	     = local.any_port
+  to_port	     = local.any_port
+  protocol	     = local.any_protocol
+  cidr_blocks	     = local.all_ips
+}
+
 locals {
+  any_port            =  0
   tcp_protocol = "tcp"
   all_ips      = ["0.0.0.0/0"]
 }

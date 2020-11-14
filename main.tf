@@ -8,6 +8,10 @@ terraform {
   required_version = ">= 0.13"
 }
 
+# ---------------------------------------------------------------------------------------------------------------------
+# CONFIGURE INSTANCE CONFIGURATION TEMPLATE THAT AN AUTO SCALING GROUP USES TO LAUNCH EC2 INSTANCES
+# ---------------------------------------------------------------------------------------------------------------------
+
 resource "aws_launch_configuration" "example" {
   image_id        = var.ami
   instance_type   = var.instance_type
@@ -20,6 +24,10 @@ resource "aws_launch_configuration" "example" {
     create_before_destroy = true
   }
 }
+
+# ---------------------------------------------------------------------------------------------------------------------
+# CREATE AN AUTO SCALING GROUP
+# ---------------------------------------------------------------------------------------------------------------------
 
 resource "aws_autoscaling_group" "example" {
   # Explicitly depend on the launch configuration's name so each time 
@@ -68,6 +76,10 @@ resource "aws_autoscaling_group" "example" {
   }
 
 }
+
+# ---------------------------------------------------------------------------------------------------------------------
+# CREATE A SECURITY GROUP THAT CONTROLS WHAT TRAFFIC CAN GO IN AND OUT OF THE EC2 INSTANCES
+# ---------------------------------------------------------------------------------------------------------------------
 
 resource "aws_security_group" "instance" {
   name = "${var.name}-instance"
