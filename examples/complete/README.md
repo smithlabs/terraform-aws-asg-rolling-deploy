@@ -1,7 +1,8 @@
 # ASG example
 
 This folder contains a [Terraform](https://www.terraform.io/) configuration that shows an example of how to
-use my [asg-rolling-deploy module](../../) to deploy a cluster of web servers
+use my [asg-rolling-deploy module](https://github.com/smithlabs/terraform-aws-asg-rolling-deploy) 
+to deploy a cluster of web servers
 (using [EC2](https://aws.amazon.com/ec2/) and [Auto Scaling](https://aws.amazon.com/autoscaling/)) in an
 [Amazon Web Services (AWS) account](http://aws.amazon.com/).
 
