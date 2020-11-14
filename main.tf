@@ -1,3 +1,9 @@
+# ---------------------------------------------------------------------------------------------------------------------
+# VERSIONING
+# This project was written for Terraform 0.13.x
+# See 'Upgrading to Terraform v0.13' https://www.terraform.io/upgrade-guides/0-13.html
+# ---------------------------------------------------------------------------------------------------------------------
+
 terraform {
   required_version = ">= 0.13"
 }

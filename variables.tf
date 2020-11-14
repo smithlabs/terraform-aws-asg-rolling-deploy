@@ -1,6 +1,6 @@
 # ---------------------------------------------------------------------------------------------------------------------
 # REQUIRED PARAMETERS
-# You must provide a value for each of these parameters.
+# You must provide a value for each of these parameters
 # ---------------------------------------------------------------------------------------------------------------------
 
 variable "name" {
@@ -38,21 +38,19 @@ variable "subnet_ids" {
   type        = list(string)
 }
 
-
-
 # ---------------------------------------------------------------------------------------------------------------------
 # OPTIONAL PARAMETERS
-# These parameters have reasonable defaults.
+# These parameters have reasonable defaults
 # ---------------------------------------------------------------------------------------------------------------------
 
 variable "load_balancers" {
-  description = "A list of elastic load balancer names to add to the autoscaling group names."
+  description = "A list of elastic load balancer names to add to the autoscaling group names"
   type        = list(string)
   default     = []
 }
 
 variable "health_check_type" {
-  description = "The type of health check to perform. Must be one of: EC2, ELB."
+  description = "The type of health check to perform. Must be one of: EC2, ELB"
   type        = string
   default     = "ELB"
 }
@@ -68,4 +66,3 @@ variable "custom_tags" {
   type        = map(string)
   default     = {}
 }
-
