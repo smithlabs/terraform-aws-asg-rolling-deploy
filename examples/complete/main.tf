@@ -36,7 +36,7 @@ module "asg" {
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
-# CREATE SECURITY RULE THAT ALLOWSS ALL TRAFFIC IN ON THE SERVER PORT FROM ANYWHERE (TCP ONLY)
+# CREATE SECURITY RULE THAT ALLOWS ALL TRAFFIC IN ON THE SERVER PORT FROM ANYWHERE (TCP ONLY)
 # ---------------------------------------------------------------------------------------------------------------------
 
 resource "aws_security_group_rule" "allow_server_http_inbound" {
