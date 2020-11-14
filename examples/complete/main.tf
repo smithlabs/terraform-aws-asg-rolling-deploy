@@ -36,7 +36,7 @@ module "asg" {
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
-# CREATE SECURITY RULES THAT ALLOW ALL TRAFFIC IN/OUT
+# CREATE SECURITY RULE THAT ALLOWS ALL TRAFFIC IN ON THE SERVER PORT FROM ANYWHERE (TCP ONLY)
 # ---------------------------------------------------------------------------------------------------------------------
 
 resource "aws_security_group_rule" "allow_server_http_inbound" {
@@ -48,6 +48,10 @@ resource "aws_security_group_rule" "allow_server_http_inbound" {
   protocol    = local.tcp_protocol
   cidr_blocks = local.all_ips
 }
+
+# ---------------------------------------------------------------------------------------------------------------------
+# CREATE SECURITY RULE THAT ALLOW ALL TRAFFIC OUT OF THE SERVER TO ANYWHERE
+# ---------------------------------------------------------------------------------------------------------------------
 
 resource "aws_security_group_rule" "allow_server_all_outbound" {
   type		     = "egress"
