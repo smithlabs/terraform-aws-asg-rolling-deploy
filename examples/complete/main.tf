@@ -60,9 +60,10 @@ resource "aws_security_group_rule" "allow_server_all_outbound" {
 }
 
 locals {
-  any_port            =  0
-  tcp_protocol = "tcp"
-  all_ips      = ["0.0.0.0/0"]
+  any_port      =  0
+  any_protocol  = "-1" 
+  tcp_protocol  = "tcp"
+  all_ips       = ["0.0.0.0/0"]
 }
 
 data "aws_vpc" "default" {
