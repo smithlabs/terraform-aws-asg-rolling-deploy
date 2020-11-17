@@ -57,7 +57,7 @@ resource "aws_autoscaling_group" "example" {
 
   tag {
     key                 = "Name"
-    value               = var.name
+    value               = "${var.name}-${var.environment}"
     propagate_at_launch = true
   }
 
