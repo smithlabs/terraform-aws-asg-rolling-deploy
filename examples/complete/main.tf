@@ -29,10 +29,10 @@ module "asg" {
   ami           = "ami-02354e95b39ca8dec" # Amazon Linux
   instance_type = "t2.micro"
 
-  min_size           = 2
-  max_size           = 2
+  min_size = 2
+  max_size = 2
 
-  subnet_ids        = data.aws_subnet_ids.default.ids
+  subnet_ids = data.aws_subnet_ids.default.ids
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -54,20 +54,20 @@ resource "aws_security_group_rule" "allow_server_http_inbound" {
 # ---------------------------------------------------------------------------------------------------------------------
 
 resource "aws_security_group_rule" "allow_server_all_outbound" {
-  type		     = "egress"
-  security_group_id  = module.asg.instance_security_group_id
+  type              = "egress"
+  security_group_id = module.asg.instance_security_group_id
 
-  from_port	     = local.any_port
-  to_port	     = local.any_port
-  protocol	     = local.any_protocol
-  cidr_blocks	     = local.all_ips
+  from_port   = local.any_port
+  to_port     = local.any_port
+  protocol    = local.any_protocol
+  cidr_blocks = local.all_ips
 }
 
 locals {
-  any_port      =  0
-  any_protocol  = "-1" 
-  tcp_protocol  = "tcp"
-  all_ips       = ["0.0.0.0/0"]
+  any_port     = 0
+  any_protocol = "-1"
+  tcp_protocol = "tcp"
+  all_ips      = ["0.0.0.0/0"]
 }
 
 data "aws_vpc" "default" {
