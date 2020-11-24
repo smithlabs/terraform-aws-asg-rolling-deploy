@@ -38,8 +38,10 @@ resource "aws_autoscaling_group" "example" {
 
   vpc_zone_identifier = var.subnet_ids
 
-  # Configure integrations with a load balancer
+  # Use load_balancer var if CLB is used
+  # Use target_group_arns var if ALB is used
   load_balancers    = var.load_balancers
+  target_group_arns = var.target_group_arns
   health_check_type = var.health_check_type
 
   min_size = var.min_size

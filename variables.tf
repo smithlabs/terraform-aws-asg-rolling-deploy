@@ -49,6 +49,12 @@ variable "load_balancers" {
   default     = []
 }
 
+variable "target_group_arns" {
+  description = "A list of aws_alb_target_group ARNs, for use with Application Load Balancing"
+  type        = list(string)
+  default     = []
+}
+
 variable "health_check_type" {
   description = "The type of health check to perform. Must be one of: EC2, ELB"
   type        = string
